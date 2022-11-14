@@ -8,14 +8,13 @@
   <select
     v-model="selected"
     class="
-      max-w-xs
+      w-36
       bg-gray-50
       border border-gray-300
       text-gray-900 text-sm
       rounded-lg
       focus:ring-blue-500 focus:border-blue-500
       block
-      w-full
       p-2.5
       dark:bg-gray-700
       dark:border-gray-600
@@ -25,14 +24,16 @@
       dark:focus:border-blue-500
     "
   >
-    <option data-test="select-hint" selected value="hint" v-if="notSelected">{{ hint }}</option>
+    <option data-test="select-hint" selected value="hint" v-if="notSelected">
+      {{ hint }}
+    </option>
     <option
       v-for="option in options"
       :key="option[keyValue]"
       :value="option[keyValue]"
       :selected="isSelected(option[keyValue])"
     >
-      {{ option[keyLabel]}}
+      {{ option[keyLabel] }}
     </option>
   </select>
 </template>
