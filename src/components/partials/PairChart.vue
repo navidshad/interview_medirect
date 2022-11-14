@@ -2,18 +2,35 @@
   <section class="h-96">
     <!-- Header 
 		-->
-    <div>
+    <div class="mb-4">
       <figure class="flex space-x-1">
         <mat-flag :code="(pair || {}).baseCurrency" />
         <mat-flag :code="(pair || {}).quoteCurrency" />
       </figure>
-      <aside>
-        <p class="font-bold">
-          <span>{{ (pair || {}).baseCurrency }}</span>
-          <span>/</span>
-          <span>{{ (pair || {}).quoteCurrency }}</span>
-        </p>
-      </aside>
+
+      <div class="flex justify-between">
+        <aside>
+          <p v-if="pair" class="font-bold">
+            <span>{{ (pair || {}).baseCurrency || "..." }}</span>
+            <span>/</span>
+            <span>{{ (pair || {}).quoteCurrency || "..." }}</span>
+          </p>
+        </aside>
+
+        <div v-if="currentPrice" class="flex flex-col items-end">
+          <h2>
+            <span class="mx-1">{{ (pair || {}).quoteCurrency }}</span>
+            <span>{{ currentPrice }}</span>
+          </h2>
+          <h4
+            class="text-xs"
+            :class="{ 'text-green-600': isBullish, 'text-red-600': !isBullish }"
+          >
+            <span>{{ diffPrice }}</span>
+            <span> ( {{ diffPercent }}% )</span>
+          </h4>
+        </div>
+      </div>
     </div>
 
     <!-- Chart 
@@ -32,14 +49,12 @@
     <nav class="flex justify-center">
       <input-horizontal-select :options="intervals" v-model="interval" />
     </nav>
-
-    <!-- <apexchart /> -->
   </section>
 </template>
 
 <script>
 import intervals from "../../helpers/intervals";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   props: {
@@ -57,16 +72,22 @@ export default {
   },
 
   computed: {
-    ...mapGetters("chart", ["series"]),
+    ...mapGetters("chart", [
+      "series",
+      "currentPrice",
+      "diffPrice",
+      "diffPercent",
+      "isBullish",
+    ]),
 
     chartOptions() {
       return {
         dataLabels: {
           enabled: false,
         },
-        stroke: {
-          curve: "straight",
-        },
+        // stroke: {
+        //   curve: "straight",
+        // },
         xaxis: {
           type: "datetime",
         },
@@ -82,12 +103,19 @@ export default {
 
   watch: {
     pair: {
-      deep:true,
+      deep: true,
       handler(newValue, old) {
-        if (newValue == old || this.pair == null) return;
-        if(!newValue.baseCurrency || !newValue.quoteCurrency) return;
+        if (newValue == null) {
+          this.CLEAR_SERIES();
+          return;
+        }
+
+        if (newValue == old) return;
+
+        if (!newValue.baseCurrency || !newValue.quoteCurrency) return;
+
         this.onIntervalChanged();
-      }
+      },
     },
 
     interval: {
@@ -101,6 +129,7 @@ export default {
 
   methods: {
     ...mapActions("chart", ["fetchTimeseries"]),
+    ...mapMutations("chart", ["CLEAR_SERIES"]),
 
     onIntervalChanged() {
       let query = {

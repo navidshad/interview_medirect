@@ -2,7 +2,10 @@
 import moment from 'moment';
 
 const dailyFormat = 'YYYY-MM-DD';
-const hourlyFormat = 'YYYY-MM-DD-HH:MM';
+const hourlyFormat = 'YYYY-MM-DD-HH:mm';
+
+// console.log(moment.utc().format());
+// console.log(moment.utc().format(hourlyFormat));
 
 export default {
 	'1H': () => {
