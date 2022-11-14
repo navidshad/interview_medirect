@@ -81,13 +81,19 @@ export default {
     ]),
 
     chartOptions() {
+      const colors = [this.isBullish ? "#22c55e" : "#ef4444"];
+
       return {
+        colors,
         dataLabels: {
           enabled: false,
         },
-        // stroke: {
-        //   curve: "straight",
-        // },
+        stroke: {
+          curve: "straight",
+        },
+        fill: {
+          colors,
+        },
         xaxis: {
           type: "datetime",
         },
