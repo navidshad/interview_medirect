@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen h-screen flex justify-center items-center">
     <div class="flex flex-col items-center">
-      <svg-loader name="logo" width="256" />
+      <mat-svg-loader name="logo" width="256" />
       <h1 class="mt-2">
         Interview Assesment by <span class="text-blue-600">Navid Shad</span>
       </h1>

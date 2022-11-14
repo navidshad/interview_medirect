@@ -1,17 +1,22 @@
 <template>
   <div class="items-center w-full sm:mx-3 md:flex md:w-2/3">
     <section class="w-full sm:mb-2 md:w-1/3">
-      <InputPairs :assets="assets" v-model="selectedParis" />
+      <InputPairs :assets="assets" v-model="selectedPair" />
     </section>
 
-    <section class="w-full md:w-2/3 bg-gray-200 h-32">History Chart</section>
+    <section class="w-full md:w-2/3 bg-gray-200 h-32">
+      <PairChartComponent :pair="selectedPair" />
+    </section>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import PairChartComponent from "./PairChart.vue";
 
 export default {
+  components: { PairChartComponent },
+
   props: {
     assetType: {
       type: String,
@@ -35,8 +40,8 @@ export default {
 
   data() {
     return {
-      selectedParis: null,
-    }
+      selectedPair: null,
+    };
   },
 
   created() {

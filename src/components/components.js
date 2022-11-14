@@ -1,11 +1,15 @@
-import SvgLoader from "./materials/SvgLoader.vue"
+import MatFlag from './materials/Flag.vue'
+import MatSvgLoader from "./materials/SvgLoader.vue"
 
-// Inputs
 import InputSelect from './inputs/Select.vue';
 import InputPairs from './inputs/Pairs.vue';
 
 export default {
-	SvgLoader,
+	// Materials
+	MatSvgLoader,
+	MatFlag,
+
+	// Inputs
 	InputSelect,
 	InputPairs,
 }
