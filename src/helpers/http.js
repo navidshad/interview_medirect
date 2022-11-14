@@ -15,17 +15,17 @@ function getQueryStrings(query) {
 	return str;
 }
 
-export function get({
+export function get(
 	url = '',
 	query = {}
-}) {
+) {
 	const api_key =
 		import.meta.env.VITE_REQUEST_API_KEY;
 	const baser_url =
 		import.meta.env.VITE_BASE_API_URL;
 
 	query['api_key'] = api_key;
-	url += baser_url + url + getQueryStrings(query);
+	url = baser_url + url + getQueryStrings(query);
 
 	return fetch(url).then(handleResponse);
 }

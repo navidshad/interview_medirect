@@ -6,20 +6,31 @@ export default {
 	namespaced: true,
 
 	state: {
-		currencies: {},
-		cryptos: {},
+		currencies: [],
+		cryptos: [],
 	},
 
 	getters: {
-		totalCurrencies: (state) => Object.keys(state.currencies).keys.length,
-		totalCryptos: (state) => Object.keys(state.cryptos).keys.length,
+		totalCurrencies: (state) => Object.keys(state.currencies).length,
+		totalCryptos: (state) => Object.keys(state.cryptos).length,
+		currencies: (state) => state.currencies,
+		cryptos: (state) => state.cryptos,
 	},
 
 	mutations: {
-		SET_LIST({
-			state
-		}, [type, data]) {
-			state[type] = data;
+		SET_LIST(
+			state, [type, data]) {
+			let list = [];
+
+			Object.keys(data).forEach(key => {
+				let item = {
+					code: key,
+					label: data[key]
+				}
+				list.push(item)
+			})
+
+			state[type] = list;
 		}
 	},
 

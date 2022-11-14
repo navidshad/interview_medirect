@@ -1,13 +1,20 @@
 <template>
   <div class="w-screen h-screen flex justify-center items-center">
-    <div class="max-w-2xl">
+    <!-- <div class="max-w-2xl">
       <h1>Forex Exchange</h1>
-    </div>
+    </div> -->
+    <PairsHistoryViewerComponent />
   </div>
 </template>
 
 <script>
-export default {};
+import PairsHistoryViewerComponent from '@/components/partials/PairsHistoryViewer.vue'
+
+export default {
+  components: {
+    PairsHistoryViewerComponent,
+  }
+};
 </script>
 
 <style>
