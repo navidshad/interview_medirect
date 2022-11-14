@@ -45,8 +45,6 @@ export default {
 
   methods: {
     onChange() {
-      if (!this.baseCurrency.length || !this.quoteCurrency.length) return;
-
       let change = {
         baseCurrency: this.baseCurrency,
         quoteCurrency: this.quoteCurrency,

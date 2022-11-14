@@ -25,7 +25,7 @@ export default {
 			Object.keys(data).forEach(key => {
 				let item = {
 					code: key,
-					label: data[key]
+					label: key + '\t' + data[key]
 				}
 				list.push(item)
 			})

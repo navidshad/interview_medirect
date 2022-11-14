@@ -10,18 +10,20 @@ export default {
 
 	state: {
 		series: [],
+		pair: "",
 	},
 
 	getters: {
 		series: (state) => [{
-			name: "Series 1",
+			name: state.pair,
 			data: state.series
 		}]
 	},
 
 	mutations: {
-		SET_SERIES(state, data) {
+		SET_SERIES(state, [pair, data]) {
 			state.series = data;
+			state.pair = pair;
 		}
 	},
 
@@ -59,7 +61,7 @@ export default {
 						return [date, close];
 					})
 
-					commit('SET_SERIES', quotes)
+					commit('SET_SERIES', [currency, quotes])
 				})
 		}
 	}

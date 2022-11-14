@@ -52,16 +52,21 @@ export default {
         return { label: i, value: i };
       }),
 
-      interval: "1W",
+      interval: "1D",
+    };
+  },
 
-      chartOptions: {
+  computed: {
+    ...mapGetters("chart", ["series"]),
+
+    chartOptions() {
+      return {
         dataLabels: {
           enabled: false,
         },
         stroke: {
           curve: "straight",
         },
-        // labels: series.monthDataSeries1.dates,
         xaxis: {
           type: "datetime",
         },
@@ -71,15 +76,20 @@ export default {
         legend: {
           horizontalAlign: "left",
         },
-      },
-    };
-  },
-
-  computed: {
-    ...mapGetters("chart", ["series"]),
+      };
+    },
   },
 
   watch: {
+    pair: {
+      deep:true,
+      handler(newValue, old) {
+        if (newValue == old || this.pair == null) return;
+        if(!newValue.baseCurrency || !newValue.quoteCurrency) return;
+        this.onIntervalChanged();
+      }
+    },
+
     interval: {
       deep: true,
       handler(newValue, old) {
