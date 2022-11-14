@@ -10,6 +10,7 @@ function getQueryStrings(query) {
 
 	Object.keys(query).forEach(key => {
 		str += encodeURI(key) + '=' + encodeURI(query[key]);
+		str += '&'
 	})
 
 	return str;

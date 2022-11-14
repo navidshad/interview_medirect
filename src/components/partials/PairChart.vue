@@ -10,7 +10,7 @@
       <aside>
         <p class="font-bold">
           <span>{{ (pair || {}).baseCurrency }}</span>
-		  <span>/</span>
+          <span>/</span>
           <span>{{ (pair || {}).quoteCurrency }}</span>
         </p>
       </aside>
@@ -18,20 +18,88 @@
 
     <!-- Chart 
 		-->
-    <figure></figure>
+    <figure>
+      <apexchart
+        type="area"
+        height="350"
+        :options="chartOptions"
+        :series="series"
+      />
+    </figure>
 
     <!-- Footer 
 		-->
-    <nav></nav>
+    <nav class="flex justify-center">
+      <input-horizontal-select :options="intervals" v-model="interval" />
+    </nav>
 
     <!-- <apexchart /> -->
   </section>
 </template>
 
 <script>
+import intervals from "../../helpers/intervals";
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   props: {
     pair: Object,
+  },
+
+  data() {
+    return {
+      intervals: intervals.getList().map((i) => {
+        return { label: i, value: i };
+      }),
+
+      interval: "1W",
+
+      chartOptions: {
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: "straight",
+        },
+        // labels: series.monthDataSeries1.dates,
+        xaxis: {
+          type: "datetime",
+        },
+        yaxis: {
+          opposite: true,
+        },
+        legend: {
+          horizontalAlign: "left",
+        },
+      },
+    };
+  },
+
+  computed: {
+    ...mapGetters("chart", ["series"]),
+  },
+
+  watch: {
+    interval: {
+      deep: true,
+      handler(newValue, old) {
+        if (newValue == old || this.pair == null) return;
+        this.onIntervalChanged();
+      },
+    },
+  },
+
+  methods: {
+    ...mapActions("chart", ["fetchTimeseries"]),
+
+    onIntervalChanged() {
+      let query = {
+        currency: this.pair.pair,
+        ...intervals[this.interval](),
+      };
+
+      this.fetchTimeseries(query);
+    },
   },
 };
 </script>

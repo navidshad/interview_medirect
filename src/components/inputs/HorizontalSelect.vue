@@ -1,10 +1,10 @@
 <template>
   <ul class="inline-flex space-x-1">
     <li
-    class="px-4 hover:bg-cyan-200 rounded-md cursor-pointer"
+      class="px-4 hover:bg-cyan-300 rounded-md cursor-pointer"
       v-for="option in options"
       :key="option[keyValue]"
-      :class="{ active: isSelected(option[keyValue]) }"
+      :class="{ 'bg-cyan-200': isSelected(option[keyValue]) }"
       @click="selected = option[keyValue]"
     >
       {{ option[keyLabel] }}

@@ -41,9 +41,7 @@ export default {
 			return get('/live_currencies_list')
 				.then(({
 					available_currencies
-				}) => {
-					commit('SET_LIST', ['currencies', available_currencies])
-				})
+				}) => commit('SET_LIST', ['currencies', available_currencies]))
 		},
 
 		fetchCryptos({
@@ -52,9 +50,7 @@ export default {
 			return get('/live_crypto_list')
 				.then(({
 					available_currencies
-				}) => {
-					commit('SET_LIST', ['cryptos', available_currencies])
-				})
+				}) => commit('SET_LIST', ['cryptos', available_currencies]))
 		}
 	},
 }

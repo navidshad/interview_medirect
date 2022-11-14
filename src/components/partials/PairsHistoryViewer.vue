@@ -4,7 +4,7 @@
       <InputPairs :assets="assets" v-model="selectedPair" />
     </section>
 
-    <section class="w-full md:w-2/3 bg-gray-200 h-32">
+    <section class="w-full md:w-2/3">
       <PairChartComponent :pair="selectedPair" />
     </section>
   </div>

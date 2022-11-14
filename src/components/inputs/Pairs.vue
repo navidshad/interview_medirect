@@ -50,7 +50,7 @@ export default {
       let change = {
         baseCurrency: this.baseCurrency,
         quoteCurrency: this.quoteCurrency,
-        get pairs() {
+        get pair() {
           return this.baseCurrency + this.quoteCurrency;
         },
       };
