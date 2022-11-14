@@ -1,6 +1,8 @@
 <template>
-  <InputSelect keyValue="code" :options="baseList" v-model="baseCurrency" />
-  <InputSelect keyValue="code" :options="quoteList" v-model="quoteCurrency" />
+  <div>
+    <InputSelect keyValue="code" :options="baseList" v-model="baseCurrency" :label="label" />
+    <InputSelect keyValue="code" :options="quoteList" v-model="quoteCurrency" />
+  </div>
 </template>
 
 <script>
@@ -12,6 +14,7 @@ export default {
       default: () => [],
     },
 
+    label: String,
     modelValue: Object,
   },
 

@@ -2,7 +2,7 @@
   <section class="h-96">
     <!-- Header 
 		-->
-    <div class="mb-4">
+    <div class="mb-4" :class="{ 'opacity-0': !pair }">
       <figure class="flex space-x-1">
         <mat-flag :code="(pair || {}).baseCurrency" />
         <mat-flag :code="(pair || {}).quoteCurrency" />
@@ -10,7 +10,7 @@
 
       <div class="flex justify-between">
         <aside>
-          <p v-if="pair" class="font-bold">
+          <p class="font-bold">
             <span>{{ (pair || {}).baseCurrency || "..." }}</span>
             <span>/</span>
             <span>{{ (pair || {}).quoteCurrency || "..." }}</span>
