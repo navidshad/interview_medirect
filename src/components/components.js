@@ -3,6 +3,7 @@ import MatSvgLoader from "./materials/SvgLoader.vue"
 
 import InputSelect from './inputs/Select.vue';
 import InputPairs from './inputs/Pairs.vue';
+import InputHorizontalSelect from './inputs/HorizontalSelect.vue';
 
 export default {
 	// Materials
@@ -12,4 +13,5 @@ export default {
 	// Inputs
 	InputSelect,
 	InputPairs,
+	InputHorizontalSelect,
 }
