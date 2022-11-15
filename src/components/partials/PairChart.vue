@@ -52,11 +52,13 @@
 
       <!-- LIVE TRIGGER -->
       <div v-if="isValidPairForLiveData">
-        <button v-if="!isLive && chartLoaded" @click="connectSocket()">
-          Get live data
-        </button>
+        <MatButton v-if="!isLive && chartLoaded" @click="connectSocket()">
+          Start live data
+        </MatButton>
 
-        <button v-else @click="disconnectSocket()">Stop live data</button>
+        <MatButton v-else @click="disconnectSocket()">
+          Stop live data
+        </MatButton>
       </div>
     </nav>
   </section>
