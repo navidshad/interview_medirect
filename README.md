@@ -2,7 +2,7 @@
 <img src="https://github.com/navidshad/interview_medirect/blob/main/screenshot.jpg"/>
 </p>
 
-This IS a responsive web application which shows the historical and current rate for an FX/CRYPTO pair. some pars have live data and chart will be updated in an interval of 1 sec.
+This is a responsive web application which shows the historical and current rate for an FX/CRYPTO pair. some pairs have live data and chart will be updated in an interval of 1 sec.
 
 ### Technologies:
 Vue3, Vite, Apexcharts, TailwindCSS, Fetch API, Websocket API.
