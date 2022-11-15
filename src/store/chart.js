@@ -4,7 +4,7 @@ import { Calc } from "calc-js";
 
 // https://momentjs.com/
 import moment from "moment";
-import { executeAfterOneSec } from "../helpers/second";
+import { executeAfterOneSec } from "../helpers/tik";
 
 export default {
   namespaced: true,
