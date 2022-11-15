@@ -1,29 +1,55 @@
 <template>
   <div class="w-screen h-screen flex flex-col justify-center items-center">
-    <section class="fixed top-10">
-      <h1 class="text-5xl font-bold">
-        {{ $filter.firstLatterUp(assetType) }} Exchange
-      </h1>
-      <p>Check out the current price for a pair</p>
-    </section>
-
     <div class="items-center w-full px-4 sm:mx-3 md:flex lg:w-2/3">
-      <section class="w-full mb-8 md:mb-0 md:w-1/3">
-        <InputSelect
-          label="Type of assets"
-          :options="xchanges"
-          v-model="assetType"
-        />
+      <!-- PAIR SELECTION FORM -->
+      <!--  -->
+      <form
+        class="
+          w-full
+          h-full
+          mb-8
+          md:pr-4 md:flex md:flex-col md:items-end md:mb-0 md:w-1/3
+        "
+      >
+        <hgroup class="self-start mb-2">
+          <h1 class="text-3xl font-bold">
+            {{ $filter.firstLatterUp(assetType) }} Exchange
+          </h1>
+          <p>Check out the current price for a pair</p>
+        </hgroup>
+
+        <div class="w-full">
+          <InputSelect
+            label="Type of assets"
+            class="mt-2"
+            :options="xchanges"
+            v-model="assetType"
+          />
+        </div>
 
         <InputPairs
           :key="assetType"
-          class="mt-3"
+          class="mt-2 w-full"
           label="Pairs"
           :assets="assets"
           v-model="selectedPair"
         />
-      </section>
 
+        <aside class="my-2 w-full self-start md:w-48">
+          <p class="text-sm">
+            Live data is available only for specific pairs,
+            <a
+              class="text-blue-600"
+              target="_blank"
+              href="https://tradermade.com/streaming-fx/currencies-list"
+              ><span>see the list</span></a
+            >.
+          </p>
+        </aside>
+      </form>
+
+      <!-- PAIR CHART -->
+      <!--  -->
       <section class="w-full md:w-2/3">
         <PairChartComponent :pair="selectedPair" />
       </section>
