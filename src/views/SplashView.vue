@@ -14,7 +14,7 @@ import { sleep } from "../helpers/promise";
 
 export default {
   created() {
-    sleep(3000).then(this.goToMain);
+    sleep(1000).then(this.goToMain);
   },
 
   methods: {

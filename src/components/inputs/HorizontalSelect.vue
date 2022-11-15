@@ -1,7 +1,7 @@
 <template>
   <ul class="inline-flex space-x-1">
     <li
-      class="px-4 hover:bg-gray-200 rounded-md cursor-pointer"
+      class="px-4 hover:bg-gray-200 rounded-md cursor-pointer transition-colors"
       v-for="option in options"
       :key="option[keyValue]"
       :class="{ 'bg-gray-100': isSelected(option[keyValue]) }"

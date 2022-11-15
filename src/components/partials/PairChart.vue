@@ -56,7 +56,7 @@
           Start live data
         </MatButton>
 
-        <MatButton v-else @click="disconnectSocket()">
+        <MatButton class="bg-red-100 hover:bg-red-300" v-else @click="disconnectSocket()">
           Stop live data
         </MatButton>
       </div>

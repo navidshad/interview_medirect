@@ -21,8 +21,17 @@
         "
       >
         <!-- TITLE AND SUBTITLE -->
-        <section class="self-start mb-2">
-          <h1 class="text-xl mt-4 md:mt-0 lg:text-2xl xl:text-3xl font-bold">
+        <section class="self-start mb-4">
+          <h1
+            class="
+              text-3xl
+              mt-4
+              md:mt-0 md:text-xl
+              lg:text-2xl
+              xl:text-3xl
+              font-bold
+            "
+          >
             {{ $filter.firstLatterUp(assetType) }} Exchange
           </h1>
           <p class="text-xs md:text-sm lg:text-base">
