@@ -151,7 +151,7 @@ export default {
 					let tick = JSON.parse(data);
 
 					executeAfterOneSec(() => {
-						commit('UPDATE_LAST_PRICE', tick.ask);
+						commit('UPDATE_LAST_PRICE', tick.bid);
 						commit('CALCULATE_DIIFS');
 					})
 				} catch (error) {}
