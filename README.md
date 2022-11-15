@@ -9,6 +9,11 @@ Vue3, Vite, Apexcharts, TailwindCSS, Fetch API, Websocket API.
 
 ## Project Setup
 
+```txt
+// Rename '.env.sample' file to '.env'
+// Put your api keys
+```
+
 ```sh
 npm install
 ```
