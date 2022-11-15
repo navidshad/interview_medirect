@@ -14,7 +14,9 @@
           :options="xchanges"
           v-model="assetType"
         />
+
         <InputPairs
+          :key="assetType"
           class="mt-3"
           label="Pairs"
           :assets="assets"

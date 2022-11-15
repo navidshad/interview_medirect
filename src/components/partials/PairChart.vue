@@ -46,15 +46,27 @@
 
     <!-- Footer 
 		-->
-    <nav class="flex justify-center">
+    <nav class="flex justify-between items-center">
+      <!-- CHART PLOTS -->
       <input-horizontal-select :options="intervals" v-model="interval" />
+
+      <!-- LIVE TRIGGER -->
+      <div v-if="isValidPairForLiveData">
+        <button v-if="!isLive && chartLoaded" @click="connectSocket()">
+          Get live data
+        </button>
+
+        <button v-else @click="disconnectSocket()">Stop live data</button>
+      </div>
     </nav>
   </section>
 </template>
 
 <script>
 import intervals from "../../helpers/intervals";
+
 import { mapActions, mapGetters, mapMutations } from "vuex";
+import { isValidPairForLiveData } from "../../helpers/live-pairs";
 
 export default {
   props: {
@@ -78,7 +90,13 @@ export default {
       "diffPrice",
       "diffPercent",
       "isBullish",
+      "chartLoaded",
+      "isLive",
     ]),
+
+    isValidPairForLiveData() {
+      return this.pair ? isValidPairForLiveData(this.pair.pair) : false;
+    },
 
     chartOptions() {
       const colors = [this.isBullish ? "#22c55e" : "#ef4444"];
@@ -113,6 +131,7 @@ export default {
       handler(newValue, old) {
         if (newValue == null) {
           this.CLEAR_SERIES();
+          this.disconnectSocket();
           return;
         }
 
@@ -134,10 +153,18 @@ export default {
   },
 
   methods: {
-    ...mapActions("chart", ["fetchTimeseries"]),
+    ...mapActions("chart", [
+      "fetchTimeseries",
+      "connectSocket",
+      "disconnectSocket",
+    ]),
+
     ...mapMutations("chart", ["CLEAR_SERIES"]),
 
     onIntervalChanged() {
+      this.CLEAR_SERIES();
+      this.disconnectSocket();
+
       let query = {
         currency: this.pair.pair,
         ...intervals[this.interval](),
