@@ -5,6 +5,7 @@ import { Calc } from "calc-js";
 // https://momentjs.com/
 import moment from "moment";
 import { executeAfterOneSec } from "../helpers/tik";
+import { toast } from "../helpers/toast";
 
 export default {
   namespaced: true,
@@ -42,6 +43,10 @@ export default {
     SET_SERIES(state, [pair, data]) {
       state.series = data;
       state.pair = pair;
+
+      if(data.length == 0) {
+        toast.info(`Chart data for "${pair}" is empty, try another pair.`)
+      }
     },
 
     UPDATE_LAST_PRICE(state, price) {
