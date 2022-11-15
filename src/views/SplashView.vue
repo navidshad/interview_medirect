@@ -19,7 +19,7 @@ export default {
 
   methods: {
     goToMain() {
-      this.$router.push({name:'main'})
+      this.$router.push({ name: "main" });
     },
   },
 };

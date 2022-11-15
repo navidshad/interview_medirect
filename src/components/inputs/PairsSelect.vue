@@ -1,6 +1,11 @@
 <template>
   <div>
-    <InputSelect keyValue="code" :options="baseList" v-model="baseCurrency" :label="label" />
+    <InputSelect
+      keyValue="code"
+      :options="baseList"
+      v-model="baseCurrency"
+      :label="label"
+    />
     <InputSelect keyValue="code" :options="quoteList" v-model="quoteCurrency" />
   </div>
 </template>

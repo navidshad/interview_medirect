@@ -1,23 +1,36 @@
 <template>
-  <div class="w-screen h-screen flex flex-col justify-center items-center">
-    <div class="items-center w-full px-4 sm:mx-3 md:flex lg:w-2/3">
+  <div
+    class="
+      md:w-screen
+      md:h-screen
+      md:flex
+      md:flex-col
+      md:justify-center
+      md:items-center
+    "
+  >
+    <div class="items-center w-full px-3 md:flex xl:w-2/3">
       <!-- PAIR SELECTION FORM -->
       <!--  -->
       <form
         class="
           w-full
-          h-full
+          md:h-full
           mb-8
           md:pr-4 md:flex md:flex-col md:items-end md:mb-0 md:w-1/3
         "
       >
-        <hgroup class="self-start mb-2">
-          <h1 class="text-3xl font-bold">
+        <!-- TITLE AND SUBTITLE -->
+        <section class="self-start mb-2">
+          <h1 class="text-xl mt-4 md:mt-0 lg:text-2xl xl:text-3xl font-bold">
             {{ $filter.firstLatterUp(assetType) }} Exchange
           </h1>
-          <p>Check out the current price for a pair</p>
-        </hgroup>
+          <p class="text-xs md:text-sm lg:text-base">
+            Check out the current price for a pair
+          </p>
+        </section>
 
+        <!-- XCHANGE SELECTOR -->
         <div class="w-full">
           <InputSelect
             label="Type of assets"
@@ -27,6 +40,7 @@
           />
         </div>
 
+        <!-- PAIR SELECTOR -->
         <InputPairs
           :key="assetType"
           class="mt-2 w-full"
@@ -35,6 +49,7 @@
           v-model="selectedPair"
         />
 
+        <!-- LIVE DATA DESCRIPTION -->
         <aside class="my-2 w-full self-start md:w-48">
           <p class="text-sm">
             Live data is available only for specific pairs,

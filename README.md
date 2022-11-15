@@ -1,14 +1,12 @@
 # interview_medirect
 
-This template should help get you started developing with Vue 3 in Vite.
+This IS a responsive web application which shows the historical and current rate for an FX/CRYPTO pair. some pars have live data and chart will be updated in an interval of 1 sec.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Technologies:
+- Vue3 & Vite
+- Apexcharts
+- TailwindCSS
+- Browser native APIs
 
 ## Project Setup
 

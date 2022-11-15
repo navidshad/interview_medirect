@@ -1,19 +1,19 @@
-import MatFlag from './materials/Flag.vue'
-import MatSvgLoader from "./materials/SvgLoader.vue"
-import MatButton from './materials/Button.vue';
+import MatFlag from "./materials/CurrencyFlag.vue";
+import MatSvgLoader from "./materials/SvgLoader.vue";
+import MatButton from "./materials/BaseButton.vue";
 
-import InputSelect from './inputs/Select.vue';
-import InputPairs from './inputs/Pairs.vue';
-import InputHorizontalSelect from './inputs/HorizontalSelect.vue';
+import InputSelect from "./inputs/BaseSelect.vue";
+import InputPairs from "./inputs/PairsSelect.vue";
+import InputHorizontalSelect from "./inputs/HorizontalSelect.vue";
 
 export default {
-	// Materials
-	MatSvgLoader,
-	MatFlag,
-	MatButton,
+  // Materials
+  MatSvgLoader,
+  MatFlag,
+  MatButton,
 
-	// Inputs
-	InputSelect,
-	InputPairs,
-	InputHorizontalSelect,
-}
+  // Inputs
+  InputSelect,
+  InputPairs,
+  InputHorizontalSelect,
+};

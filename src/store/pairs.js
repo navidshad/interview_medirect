@@ -1,56 +1,47 @@
-import {
-	get
-} from "../helpers/http";
+import { get } from "../helpers/http";
 
 export default {
-	namespaced: true,
+  namespaced: true,
 
-	state: {
-		currencies: [],
-		cryptos: [],
-	},
+  state: {
+    currencies: [],
+    cryptos: [],
+  },
 
-	getters: {
-		totalCurrencies: (state) => Object.keys(state.currencies).length,
-		totalCryptos: (state) => Object.keys(state.cryptos).length,
-		currencies: (state) => state.currencies,
-		cryptos: (state) => state.cryptos,
-	},
+  getters: {
+    totalCurrencies: (state) => Object.keys(state.currencies).length,
+    totalCryptos: (state) => Object.keys(state.cryptos).length,
+    currencies: (state) => state.currencies,
+    cryptos: (state) => state.cryptos,
+  },
 
-	mutations: {
-		SET_LIST(
-			state, [type, data]) {
-			let list = [];
+  mutations: {
+    SET_LIST(state, [type, data]) {
+      let list = [];
 
-			Object.keys(data).forEach(key => {
-				let item = {
-					code: key,
-					label: key + '\t' + data[key]
-				}
-				list.push(item)
-			})
+      Object.keys(data).forEach((key) => {
+        let item = {
+          code: key,
+          label: key + "\t" + data[key],
+        };
+        list.push(item);
+      });
 
-			state[type] = list;
-		}
-	},
+      state[type] = list;
+    },
+  },
 
-	actions: {
-		fetchCurrencies({
-			commit
-		}) {
-			return get('/live_currencies_list')
-				.then(({
-					available_currencies
-				}) => commit('SET_LIST', ['currencies', available_currencies]))
-		},
+  actions: {
+    fetchCurrencies({ commit }) {
+      return get("/live_currencies_list").then(({ available_currencies }) =>
+        commit("SET_LIST", ["currencies", available_currencies])
+      );
+    },
 
-		fetchCryptos({
-			commit
-		}) {
-			return get('/live_crypto_list')
-				.then(({
-					available_currencies
-				}) => commit('SET_LIST', ['cryptos', available_currencies]))
-		}
-	},
-}
+    fetchCryptos({ commit }) {
+      return get("/live_crypto_list").then(({ available_currencies }) =>
+        commit("SET_LIST", ["cryptos", available_currencies])
+      );
+    },
+  },
+};

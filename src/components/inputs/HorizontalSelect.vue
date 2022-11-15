@@ -11,8 +11,8 @@
     </li>
   </ul>
 </template>
-  
-  <script>
+
+<script>
 export default {
   props: {
     options: { type: Array, default: () => {} },
