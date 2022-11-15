@@ -2,15 +2,15 @@ import { describe, expect, it } from "vitest";
 
 import { mount, config } from "@vue/test-utils";
 
-import PairsComponent from "../inputs/Pairs.vue";
-import InputSelect from "../inputs/Select.vue";
+import PairsComponent from "../inputs/PairsSelect.vue";
+import InputSelect from "../inputs/BaseSelect.vue";
 
 config.global.components = {
   InputSelect,
 };
 
 describe("InputPairs", () => {
-  it("Update shount not triggered when there is only one selected asset", async () => {
+  it("Update shoud be triggered when there is only one selected asset", async () => {
     let props = {
       assets: [
         { code: "c1", labe: "l1" },
@@ -28,12 +28,6 @@ describe("InputPairs", () => {
     let emitted = wrapper.emitted();
 
     // Check emitted after first asset selection
-    expect(emitted).not.toHaveProperty("update:modelValue");
-
-    await quoteWrapper.find("select").setValue("c2");
-    emitted = wrapper.emitted();
-
-    // Check emitted after second asset selection
     expect(emitted).toHaveProperty("update:modelValue");
   });
 

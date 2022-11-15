@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 
 import { mount } from "@vue/test-utils";
-import InputSelect from "../inputs/Select.vue";
+import InputSelect from "../inputs/BaseSelect.vue";
 
 describe("InputSelect", () => {
   it("renders properly", () => {
