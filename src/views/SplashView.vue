@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center">
       <mat-svg-loader name="logo" width="256" />
       <h1 class="mt-2">
-        Interview Assesment by <span class="text-blue-600">Navid Shad</span>
+        Interview Assignment by <span class="text-blue-600">Navid Shad</span>
       </h1>
     </div>
   </div>
