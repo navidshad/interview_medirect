@@ -13,7 +13,7 @@
 import { sleep } from "../helpers/promise";
 
 export default {
-  created() {
+  async created() {
     sleep(1000).then(this.goToMain);
   },
 

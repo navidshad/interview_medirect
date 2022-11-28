@@ -8,7 +8,7 @@ export default {
   computed: {
     src() {
       const name = this.name;
-      let src = "/src/assets/svg/";
+      let src = "/assets/svg/";
 
       if (!name) return "";
 

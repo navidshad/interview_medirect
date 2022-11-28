@@ -144,7 +144,7 @@ export default {
           });
         } catch (error) {
           console.log();
-          data;
+          // data;
         }
       });
 

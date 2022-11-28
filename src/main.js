@@ -12,10 +12,11 @@ import components from "./components/components.js";
 import filters from "./helpers/filter";
 import store from "./store";
 
-const app = createApp(App).use(store);
+const app = createApp(App)
 
 Object.keys(components).forEach((key) => app.component(key, components[key]));
 
+app.use(store);
 app.use(router);
 app.use(VueApexCharts);
 app.use(Toast);
